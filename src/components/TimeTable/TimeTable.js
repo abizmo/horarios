@@ -17,21 +17,12 @@ class TimeTable extends React.Component {
     };
   }
 
-  handleSelection(codigo) {
-    const { selected } = this.state;
-    if (selected.indexOf(codigo) === -1) {
-      selected.push(codigo);
-      this.setState({ selected });
-    } else
-      this.setState({ selected: selected.filter(item => item !== codigo) });
-  }
-
   isItemSelected(codigo) {
-    return this.state.selected.indexOf(codigo) !== -1;
+    return this.props.selected.indexOf(codigo) !== -1;
   }
 
   renderColectas() {
-    const { colectas } = this.props;
+    const { colectas, onSelect } = this.props;
 
     return colectas.map(colecta => (
       <TableRow key={colecta.codigo}>
@@ -39,7 +30,7 @@ class TimeTable extends React.Component {
           <Checkbox
             checked={this.isItemSelected(colecta.codigo)}
             inputProps={{ "aria-labelledby": colecta.codigo }}
-            onClick={() => this.handleSelection(colecta.codigo)}
+            onClick={() => onSelect(colecta.codigo)}
           />
         </TableCell>
         <TableCell component="th" scope="row">
@@ -56,9 +47,9 @@ class TimeTable extends React.Component {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell>Código</TableCell>
-            <TableCell>Nombre</TableCell>
-            <TableCell>Horario</TableCell>
+            <TableCell style={{ width: "5%" }}>Código</TableCell>
+            <TableCell style={{ width: "40%" }}>Nombre</TableCell>
+            <TableCell style={{ width: "55%" }}>Horario</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{this.renderColectas()}</TableBody>

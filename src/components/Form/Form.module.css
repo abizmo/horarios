@@ -1,0 +1,19 @@
+.Paper {
+  width: 100%;
+  padding: 32px 16px;
+  margin: 40px 0;
+}
+
+.Form {
+  display: flex;
+  align-items: baseline;
+}
+
+.Input {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.Button {
+  height: 56px;
+}
