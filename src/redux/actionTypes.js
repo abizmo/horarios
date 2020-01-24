@@ -1,0 +1,3 @@
+export const GET_COLECTAS = "GET_COLECTAS";
+export const SELECT_COLECTA = "SELECT_COLECTA";
+export const MODIFY_HORARIO = "MODIFY_HORARIO";

@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Button, Paper, TextField } from "@material-ui/core";
 import styles from "./Form.module.css";
+import { modifyHorario } from "../../redux/actions";
 
 class Form extends React.Component {
   constructor(props) {
@@ -13,9 +15,7 @@ class Form extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { input } = this.state;
-    this.setState({ input: "" });
-    return this.props.onSubmit(input);
+    return this.props.modifyHorario(this.state.input);
   }
 
   render() {
@@ -56,4 +56,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default connect(null, { modifyHorario })(Form);
